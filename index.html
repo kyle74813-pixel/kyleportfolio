@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANTIGRAVITY // ASCII</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=33">
+</head>
+
+<body>
+    <!-- The Living Background -->
+    <canvas id="ascii-canvas"></canvas>
+
+    <!-- Noise Overlay for texture -->
+    <div class="noise-overlay"></div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor" class="custom-cursor"></div>
+    <div id="cursor-follower" class="cursor-follower"></div>
+
+    <!-- Main Content Wrapper -->
+    <main class="app-container">
+
+
+
+
+        <!-- Navigation -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <div class="logo">KYLE KAWAKAMI</div>
+                <div class="role">PRODUCT DESIGNER</div>
+            </div>
+            <div class="nav-right">
+                <a href="#works" class="nav-item">WORKS</a>
+                <a href="about.html" class="nav-item">ABOUT</a>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                    <div class="toggle-track">
+                        <div class="toggle-icons">
+                            <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                            <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                        </div>
+                        <div class="toggle-thumb"></div>
+                    </div>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero-minimal">
+            <!-- Hero Content Left -->
+            <div class="hero-left-content">
+                <h1 class="hero-headline">
+                    Defining AI Application development<br> on <a href="https://c3.ai/c3-agentic-ai-platform/"
+                        target="_blank" class="headline-link">C3 Agentic AI Platform<svg class="link-icon"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg></a>
+                </h1>
+
+                <div class="hero-sub-grid">
+                    <div class="sub-col">
+                        <p>Master of Human-Computer Interaction @ <a href="https://hcii.cmu.edu/academics/mhci"
+                                target="_blank" class="hero-link">Carnegie Mellon
+                                University<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg></a></p>
+                        <p>Bachelor of Fine Arts in Graphic Design @ <a
+                                href="https://www.chapman.edu/wilkinson/art/graphic-design/index.aspx" target="_blank"
+                                class="hero-link">Chapman
+                                University<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg></a></p>
+                    </div>
+                    <div class="sub-col">
+                        <p>Previously Designer @ <a href="https://www.kap7.com/" target="_blank" class="hero-link">KAP7
+                                International<svg class="link-icon" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg></a></p>
+                        <p>Previously Art Director @ <a
+                                href="https://crftbymaki.com/?srsltid=AfmBOops7WRTBc14nFhZvfmfpB5qCn4_Qx9F3AyJABLbaUO03oEl-Cps"
+                                target="_blank" class="hero-link">CRFT by Maki<svg class="link-icon" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg></a></p>
+                        <p>Previously Graphic Designer @ <a href="https://www.terasakibudokan.org/" target="_blank"
+                                class="hero-link">Terasaki Budokan<svg class="link-icon" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg></a></p>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="hero-center">
+                <!-- Circular Text Container (Keeping this here as it is absolutely positioned now) -->
+                <div class="circular-text-container">
+                    <svg viewBox="0 0 200 200" class="circular-text">
+                        <path id="circlePath" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"
+                            fill="none" />
+                        <text>
+                            <textPath href="#circlePath" startOffset="0%">
+                                DESIGNING INTELLIGENCE • BRIDGING HUMAN INTENT & MACHINE LOGIC •
+                            </textPath>
+                        </text>
+                    </svg>
+                    <div class="center-image">
+                        <!-- Placeholder for a profile or abstract image -->
+                        <div class="img-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-footer">
+                <a href="#works" class="scroll-indicator">
+                    <span class="scroll-label">SCROLL</span>
+                    <div class="scroll-chevron">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Works List Section -->
+        <section id="works" class="works-list-section">
+            <div class="section-header">
+                <span class="label">SELECTED WORKS</span>
+                <span class="count">(05)</span>
+            </div>
+
+            <div class="works-list">
+                <a href="project.html" class="work-row" data-ascii="AGENT" data-image="images/workbench.png"
+                    style="text-decoration: none;">
+                    <div class="work-col name">AI AGENT WORKBENCH</div>
+                    <div class="work-col type">C3 AI STUDIO</div>
+                    <div class="work-col year">2025</div>
+                </a>
+                <a href="project.html" class="work-row" data-ascii="AUTO" data-image="images/parachute.png"
+                    style="text-decoration: none;">
+                    <div class="work-col name">AUTOMATING PARACHUTE PACKING</div>
+                    <div class="work-col type">ENGINEERING</div>
+                    <div class="work-col year">2025</div>
+                </a>
+                <a href="project.html" class="work-row" data-ascii="BINARY" data-image="images/neural-interface.png"
+                    style="text-decoration: none;">
+                    <div class="work-col name">NEURAL INTERFACE</div>
+                    <div class="work-col type">SYSTEM DESIGN</div>
+                    <div class="work-col year">2024</div>
+                </a>
+                <a href="project.html" class="work-row" data-ascii="HEX" data-image="images/synthetic-vision.png"
+                    style="text-decoration: none;">
+                    <div class="work-col name">SYNTHETIC VISION</div>
+                    <div class="work-col type">DASHBOARD</div>
+                    <div class="work-col year">2023</div>
+                </a>
+                <a href="project.html" class="work-row" data-ascii="WAVES" data-image="images/echo-chamber.png"
+                    style="text-decoration: none;">
+                    <div class="work-col name">ECHO CHAMBER</div>
+                    <div class="work-col type">WEBGL EXP</div>
+                    <div class="work-col year">2022</div>
+                </a>
+            </div>
+
+            <!-- Floating Project Preview Image -->
+            <div id="project-preview" class="project-preview-image"></div>
+        </section>
+
+        <!-- About / Info -->
+        <section id="about" class="info-section">
+            <div class="info-grid">
+                <div class="info-col">
+                    <span class="label">ABOUT</span>
+                    <p>Focusing on the intersection of AI and human interface. Creating tools that amplify human
+                        potential rather than replacing it.</p>
+                </div>
+                <div class="info-col">
+                    <span class="label">EXPERTISE</span>
+                    <ul class="clean-list">
+                        <li>PRODUCT STRATEGY</li>
+                        <li>UI/UX DESIGN</li>
+                        <li>PROTOTYPING</li>
+                        <li>FRONTEND DEV</li>
+                    </ul>
+                </div>
+                <div class="info-col">
+                    <span class="label">CONTACT</span>
+                    <ul class="clean-list">
+                        <li><a href="#">EMAIL -></a></li>
+                        <li><a href="#">TWITTER -></a></li>
+                        <li><a href="#">LINKEDIN -></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>

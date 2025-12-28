@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI AGENT WORKBENCH // KYLE KAWAKAMI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=33">
+</head>
+
+<body>
+    <!-- The Living Background -->
+    <canvas id="ascii-canvas"></canvas>
+
+    <!-- Noise Overlay for texture -->
+    <div class="noise-overlay"></div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor" class="custom-cursor"></div>
+    <div id="cursor-follower" class="cursor-follower"></div>
+
+    <!-- Main Content Wrapper -->
+    <main class="app-container">
+
+        <!-- Navigation -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">KYLE KAWAKAMI</a>
+                </div>
+                <div class="role">PRODUCT DESIGNER</div>
+            </div>
+            <div class="nav-right">
+                <a href="index.html#works" class="nav-item">WORKS</a>
+                <a href="about.html" class="nav-item">ABOUT</a>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                    <div class="toggle-track">
+                        <div class="toggle-icons">
+                            <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                            <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                        </div>
+                        <div class="toggle-thumb"></div>
+                    </div>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Full Width Hero Image -->
+        <section class="project-hero-image">
+            <div class="img-placeholder-large"></div>
+        </section>
+
+        <!-- New Project Header Structure -->
+        <section class="project-header-new">
+            <div class="project-label">AI Agent Workbench</div>
+            <h1 class="project-headline">
+                AI Agent creation and lifecycle management for enterprise software
+            </h1>
+
+            <div class="project-meta-grid">
+                <div class="meta-col">
+                    <div class="meta-label">ROLE & RESPONSIBILITIES</div>
+                    <div class="meta-value">
+                        Product Designer
+                    </div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">TIMELINE</div>
+                    <div class="meta-value">
+                        2 months (2025)
+                    </div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">COLLABORATION</div>
+                    <div class="meta-value">
+                        3 Designers<br>
+                        1 Project Manager<br>
+                        8 Engineers
+                    </div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">OUTCOME</div>
+                    <div class="meta-value">
+                        AI Agent Workbench & Monitoring Interface
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="project-problem-section">
+            <div class="section-big-title">Problem</div>
+            <div class="problem-body">
+                <p>Traditional brain-computer interfaces are cluttered, technical, and intimidating. The raw data stream
+                    is overwhelming for clinicians and impossible for patients to understand.</p>
+                <p>We needed to bridge the gap between complex neural signals and human-readable insights, creating a
+                    language that speaks to both machine logic and human intent.</p>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section class="project-problem-section">
+            <div class="section-big-title">Research</div>
+            <div class="problem-body">
+                <p>Through extensive user research with neurologists and patients, we discovered that the key barrier
+                    wasn't technical complexity—it was the lack of context and narrative around the data.</p>
+                <p>Clinicians needed to see patterns over time, not just snapshots. Patients needed to understand what
+                    the signals meant for their daily lives, not just raw numbers.</p>
+                <p>We conducted 40+ interviews, shadowed 12 clinical sessions, and analyzed existing BCI workflows to
+                    identify critical pain points and opportunities for improvement.</p>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="project-problem-section">
+            <div class="section-big-title">Solution</div>
+            <div class="problem-body">
+                <p>We designed a layered interface that progressively reveals complexity. At the surface level, patients
+                    see simple, human-readable insights. One layer deeper, clinicians access detailed analytics and
+                    pattern recognition.</p>
+                <p>The visualization system uses color, motion, and spatial relationships to represent neural activity
+                    in an intuitive way—transforming abstract data into something that feels natural and understandable.
+                </p>
+                <p>The result is a system that bridges the gap between machine precision and human intuition, making
+                    brain-computer interfaces accessible to everyone.</p>
+            </div>
+        </section>
+
+
+        <!-- Project Gallery -->
+        <section class="project-gallery">
+            <div class="gallery-item full">
+                <div class="img-placeholder-gallery"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item half">
+                    <div class="img-placeholder-gallery"></div>
+                </div>
+                <div class="gallery-item half">
+                    <div class="img-placeholder-gallery"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Project -->
+        <section class="next-project">
+            <div class="next-label">NEXT PROJECT</div>
+            <a href="#" class="next-link">SYNTHETIC VISION -></a>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

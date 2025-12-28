@@ -1,0 +1,409 @@
+/* About Page Styles - Matching kylekawakami.com/about */
+
+:root {
+    --bg-color: #0a0a0a;
+    --text-color: #E0E0E0;
+    --text-dim: #999;
+    --accent-color: #fff;
+    --font-main: 'Inter', sans-serif;
+}
+
+body.light-mode {
+    --bg-color: #f0f0f0;
+    --text-color: #111111;
+    --text-dim: #666;
+    --accent-color: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem 4rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nav-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.role {
+    color: var(--text-dim);
+}
+
+.nav-right {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.nav-item {
+    color: var(--text-color);
+    text-decoration: none;
+    position: relative;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--accent-color);
+    transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+/* Main Container */
+.about-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem 4rem 4rem;
+}
+
+/* Hero Section */
+.about-hero {
+    padding: 4rem 0 8rem 0;
+    max-width: 1000px;
+}
+
+.about-headline {
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text-color);
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 4rem 0;
+    border-top: 1px solid #222;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    padding-top: 3rem;
+}
+
+.skills-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.skills-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+}
+
+.skills-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.skills-list li {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+/* Story Section */
+.story-section {
+    padding: 6rem 0;
+    border-top: 1px solid #222;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    letter-spacing: -0.02em;
+}
+
+.story-content {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.story-content p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+}
+
+/* Experience Section */
+.experience-section {
+    padding: 6rem 0;
+    border-top: 1px solid #222;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 6rem;
+    padding-top: 3rem;
+}
+
+.experience-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.experience-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.experience-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+}
+
+.experience-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.experience-item h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.experience-item p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+}
+
+/* Job Items */
+.experience-right {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.job-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #222;
+}
+
+.job-item:last-child {
+    border-bottom: none;
+}
+
+.job-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.job-company {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+}
+
+.job-company a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.job-company a:hover {
+    color: var(--accent-color);
+}
+
+.job-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-dim);
+    max-width: 700px;
+}
+
+/* Contact CTA */
+.contact-cta {
+    padding: 8rem 0 4rem 0;
+    text-align: center;
+    border-top: 1px solid #222;
+}
+
+.cta-title {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 50px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Footer */
+.footer {
+    padding: 3rem 4rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    border-top: 1px solid #222;
+}
+
+/* Theme Toggle Switch */
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-track {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    background-color: var(--text-color);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6px;
+    transition: background-color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.toggle-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 7px;
+    pointer-events: none;
+}
+
+.toggle-icons svg {
+    color: var(--bg-color);
+    transition: color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    background-color: var(--bg-color);
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), background-color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 2;
+}
+
+body.light-mode .toggle-thumb {
+    transform: translateX(24px);
+}
+
+.theme-toggle-btn:hover .toggle-track {
+    opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-container {
+        padding: 0 1.5rem 2rem 1.5rem;
+    }
+
+    .top-nav {
+        padding: 1.5rem;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .nav-right {
+        gap: 1.5rem;
+    }
+
+    .about-headline {
+        font-size: 2rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .experience-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .cta-title {
+        font-size: 2rem;
+    }
+}
