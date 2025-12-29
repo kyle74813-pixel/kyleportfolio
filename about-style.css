@@ -1,22 +1,22 @@
 /* About Page Styles - Matching kylekawakami.com/about */
 
 :root {
-    --bg-color: #0a0a0a;
-    --text-color: #E0E0E0;
-    --text-dim: #999;
-    --accent-color: #fff;
-    --brand-color: #0050fc;
-    --brand-color-rgb: 0, 80, 252;
-    --font-main: 'Inter', sans-serif;
-}
-
-body.light-mode {
     --bg-color: #f0f0f0;
     --text-color: #111111;
     --text-dim: #666;
     --accent-color: #000000;
     --brand-color: #8f8f8f;
     --brand-color-rgb: 143, 143, 143;
+    --font-main: 'Inter', sans-serif;
+}
+
+body.dark-mode {
+    --bg-color: #0a0a0a;
+    --text-color: #E0E0E0;
+    --text-dim: #999;
+    --accent-color: #fff;
+    --brand-color: #0050fc;
+    --brand-color-rgb: 0, 80, 252;
 }
 
 /* Disable transitions on load to prevent reanimation */
@@ -381,7 +381,7 @@ body {
     z-index: 2;
 }
 
-body.light-mode .toggle-thumb {
+body.dark-mode .toggle-thumb {
     transform: translateX(24px);
 }
 

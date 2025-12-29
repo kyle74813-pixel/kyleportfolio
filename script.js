@@ -115,15 +115,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
 
     // Sync theme from documentElement (set in head) to body
-    if (document.documentElement.classList.contains('light-mode')) {
-        body.classList.add('light-mode');
+    if (document.documentElement.classList.contains('dark-mode')) {
+        body.classList.add('dark-mode');
     }
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            const isLight = body.classList.toggle('light-mode');
-            document.documentElement.classList.toggle('light-mode', isLight);
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            const isDark = body.classList.toggle('dark-mode');
+            document.documentElement.classList.toggle('dark-mode', isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
     }
 
