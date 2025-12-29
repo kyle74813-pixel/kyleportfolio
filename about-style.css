@@ -78,7 +78,8 @@ body {
     transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.nav-item:hover::after {
+.nav-item:hover::after,
+.nav-item.active::after {
     width: 100%;
 }
 

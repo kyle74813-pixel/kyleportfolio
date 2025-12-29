@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Works // KYLE KAWAKAMI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=34">
+</head>
+
+<body>
+    <!-- The Living Background -->
+    <canvas id="ascii-canvas"></canvas>
+
+    <!-- Noise Overlay for texture -->
+    <div class="noise-overlay"></div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor" class="custom-cursor"></div>
+    <div id="cursor-follower" class="cursor-follower"></div>
+
+    <!-- Main Content Wrapper -->
+    <main class="app-container">
+
+        <!-- Navigation -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="index.html" class="logo-link">
+                    <div class="logo">KYLE KAWAKAMI</div>
+                </a>
+                <div class="role">PRODUCT DESIGNER</div>
+            </div>
+            <div class="nav-right">
+                <a href="works.html" class="nav-item active">WORKS</a>
+                <a href="about.html" class="nav-item">ABOUT</a>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                    <div class="toggle-track">
+                        <div class="toggle-icons">
+                            <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                            <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                        </div>
+                        <div class="toggle-thumb"></div>
+                    </div>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Works Header -->
+        <header class="works-header-section">
+            <h1 class="works-title">All Works</h1>
+            <p class="works-subtitle">A collection of projects spanning AI platforms, automated engineering systems, and
+                experimental interfaces.</p>
+
+            <div class="filter-container">
+                <button class="filter-pill active" data-filter="all">ALL</button>
+                <button class="filter-pill" data-filter="product-design">PRODUCT DESIGN</button>
+                <button class="filter-pill" data-filter="ai-platform">AI PLATFORM</button>
+                <button class="filter-pill" data-filter="engineering">ENGINEERING</button>
+                <button class="filter-pill" data-filter="system-design">SYSTEM DESIGN</button>
+            </div>
+        </header>
+
+        <!-- Dynamic Works Grid -->
+        <section class="works-grid full-width" id="works-grid">
+            <!-- Project 1 -->
+            <a href="project.html" class="featured-card project-card" data-category="product-design ai-platform">
+                <div class="featured-image">
+                    <img src="images/workbench.png" alt="AI Agent Workbench" />
+                </div>
+                <div class="featured-info">
+                    <div class="featured-tags">
+                        <span class="tag">PRODUCT DESIGN</span>
+                        <span class="tag">AI PLATFORM</span>
+                    </div>
+                    <h3 class="featured-title">AI Agent Workbench →</h3>
+                    <p class="featured-description">Building intelligent agent orchestration tools for enterprise AI
+                        development. This platform allows developers to chain complex LLM tasks into autonomous
+                        workflows with enterprise-grade reliability.</p>
+                </div>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="project.html" class="featured-card project-card" data-category="engineering">
+                <div class="featured-image">
+                    <img src="images/parachute.png" alt="Parachute Automation" />
+                </div>
+                <div class="featured-info">
+                    <div class="featured-tags">
+                        <span class="tag">ENGINEERING</span>
+                        <span class="tag">AUTOMATION</span>
+                    </div>
+                    <h3 class="featured-title">Automating Parachute Packing →</h3>
+                    <p class="featured-description">Designing automated systems to revolutionize safety equipment
+                        manufacturing. Leveraging robotics and computer vision to ensure 100% precision in life-critical
+                        equipment assembly.</p>
+                </div>
+            </a>
+
+            <!-- Project 3 -->
+            <a href="project.html" class="featured-card project-card" data-category="system-design">
+                <div class="featured-image">
+                    <img src="images/neural-interface.png" alt="Neural Interface" />
+                </div>
+                <div class="featured-info">
+                    <div class="featured-tags">
+                        <span class="tag">SYSTEM DESIGN</span>
+                        <span class="tag">INTERFACE</span>
+                    </div>
+                    <h3 class="featured-title">Neural Interface →</h3>
+                    <p class="featured-description">Creating seamless human-computer interaction through advanced neural
+                        systems. Exploring the boundary between cognitive intent and digital execution using
+                        high-bandwidth neuro-links.</p>
+                </div>
+            </a>
+
+            <!-- Project 4 -->
+            <a href="project.html" class="featured-card project-card" data-category="product-design system-design">
+                <div class="featured-image">
+                    <img src="images/synthetic-vision.png" alt="Synthetic Vision" />
+                </div>
+                <div class="featured-info">
+                    <div class="featured-tags">
+                        <span class="tag">PRODUCT DESIGN</span>
+                        <span class="tag">DASHBOARD</span>
+                    </div>
+                    <h3 class="featured-title">Synthetic Vision →</h3>
+                    <p class="featured-description">A high-performance dashboard for autonomous vehicle fleet
+                        management. Visualizing millions of data points in real-time to provide operators with
+                        superhuman situational awareness.</p>
+                </div>
+            </a>
+
+            <!-- Project 5 -->
+            <a href="project.html" class="featured-card project-card" data-category="experimental">
+                <div class="featured-image">
+                    <img src="images/echo-chamber.png" alt="Echo Chamber" />
+                </div>
+                <div class="featured-info">
+                    <div class="featured-tags">
+                        <span class="tag">WEBGL EXP</span>
+                        <span class="tag">EXPERIMENTAL</span>
+                    </div>
+                    <h3 class="featured-title">Echo Chamber →</h3>
+                    <p class="featured-description">An immersive WebGL experience exploring the relationship between
+                        sound and spatial geometry. Using real-time audio analysis to generate reactive procedural
+                        environments.</p>
+                </div>
+            </a>
+        </section>
+
+        <!-- Footer / Contact -->
+        <section id="about" class="info-section">
+            <div class="info-grid">
+                <div class="info-col">
+                    <span class="label">ABOUT</span>
+                    <p>Focusing on the intersection of AI and human interface. Creating tools that amplify human
+                        potential rather than replacing it.</p>
+                </div>
+                <div class="info-col">
+                    <span class="label">EXPERTISE</span>
+                    <ul class="clean-list">
+                        <li>PRODUCT STRATEGY</li>
+                        <li>UI/UX DESIGN</li>
+                        <li>PROTOTYPING</li>
+                        <li>FRONTEND DEV</li>
+                    </ul>
+                </div>
+                <div class="info-col">
+                    <span class="label">CONTACT</span>
+                    <ul class="clean-list">
+                        <li><a href="#">EMAIL -></a></li>
+                        <li><a href="#">TWITTER -></a></li>
+                        <li><a href="#">LINKEDIN -></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>

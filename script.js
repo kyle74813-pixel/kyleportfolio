@@ -11,7 +11,6 @@ class AsciiBackground {
         this.rows = Math.floor(this.height / this.fontSize);
 
         // Characters sorted by density (though we'll use a subset for style)
-        this.chars = '01'; // Binary rain style for now, can be expanded
         this.chars = ' .:-=+*#%@'; // Density map
 
         // State
@@ -62,8 +61,10 @@ class AsciiBackground {
     }
 
     animate() {
+        if (!this.canvas) return;
         const computedStyle = getComputedStyle(document.body);
-        this.ctx.fillStyle = computedStyle.getPropertyValue('--bg-color').trim();
+        const bgColor = computedStyle.getPropertyValue('--bg-color').trim() || '#050505';
+        this.ctx.fillStyle = bgColor;
         this.ctx.fillRect(0, 0, this.width, this.height);
 
         this.ctx.fillStyle = '#333'; // Base text color
@@ -81,27 +82,19 @@ class AsciiBackground {
                 const dy = py - this.mouse.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
-                // Wave effect
-                const noise = Math.sin(x * 0.1 + this.time) * Math.cos(y * 0.1 + this.time);
-
                 // Interaction radius
                 const maxDist = 300;
                 let intensity = 0;
 
                 if (dist < maxDist) {
                     intensity = 1 - (dist / maxDist);
-                    // Change character based on proximity
-                    const charIndex = Math.floor(intensity * (this.chars.length - 1));
                     // Highlight color near mouse
                     this.ctx.fillStyle = `rgba(0, 80, 252, ${intensity})`; // Blue #0050fc
                 } else {
                     this.ctx.fillStyle = '#1a1a1a'; // Dim background
                 }
 
-
-
                 // Draw character
-                // If near mouse, show dense chars, else show sparse
                 const charToShow = dist < maxDist
                     ? this.chars[Math.floor(intensity * (this.chars.length - 1))]
                     : (Math.random() > 0.98 ? '.' : ''); // Random twinkling background
@@ -123,37 +116,12 @@ class AsciiBackground {
     }
 }
 
-// Loader Logic
+// Global initialization
 document.addEventListener('DOMContentLoaded', () => {
-    const loader = document.getElementById('loader');
-    const progress = document.querySelector('.loader-progress');
-
-    // Only run loader logic if loader exists
-    if (loader && progress) {
-        let width = 0;
-        const interval = setInterval(() => {
-            width += Math.random() * 10;
-            if (width > 100) width = 100;
-            progress.style.width = width + '%';
-
-            if (width === 100) {
-                clearInterval(interval);
-                setTimeout(() => {
-                    loader.classList.add('hidden');
-                    // Initialize Canvas after loader only if canvas exists
-                    const canvas = document.getElementById('ascii-canvas');
-                    if (canvas) {
-                        window.asciiBg = new AsciiBackground(); // Make accessible
-                    }
-                }, 500);
-            }
-        }, 100);
-    } else {
-        // No loader, initialize canvas immediately if it exists
-        const canvas = document.getElementById('ascii-canvas');
-        if (canvas) {
-            window.asciiBg = new AsciiBackground();
-        }
+    // Canvas Background
+    const canvas = document.getElementById('ascii-canvas');
+    if (canvas) {
+        window.asciiBg = new AsciiBackground();
     }
 
     // Custom Cursor Logic
@@ -168,12 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
             mouseX = e.clientX;
             mouseY = e.clientY;
 
-            // Immediate update for small cursor
             cursor.style.left = mouseX + 'px';
             cursor.style.top = mouseY + 'px';
         });
 
-        // Smooth follower
         function animateCursor() {
             followerX += (mouseX - followerX) * 0.1;
             followerY += (mouseY - followerY) * 0.1;
@@ -186,36 +152,61 @@ document.addEventListener('DOMContentLoaded', () => {
         animateCursor();
     }
 
-    // Hover effects
-    const interactiveElements = document.querySelectorAll('a, button, .nav-item');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            follower.classList.add('active');
+    // Interactive Hover Elements
+    function handleMouseEnter() {
+        if (follower) follower.classList.add('active');
+    }
+    function handleMouseLeave() {
+        if (follower) follower.classList.remove('active');
+    }
+
+    function updateInteractiveElements() {
+        const interactiveElements = document.querySelectorAll('a, button, .nav-item, .filter-pill, .work-row');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', handleMouseEnter);
+            el.addEventListener('mouseleave', handleMouseLeave);
         });
-        el.addEventListener('mouseleave', () => {
-            follower.classList.remove('active');
+    }
+    updateInteractiveElements();
+
+    // Project Filtering Logic for works.html
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    if (filterPills.length > 0 && projectCards.length > 0) {
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                const filter = pill.getAttribute('data-filter');
+                filterPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+
+                projectCards.forEach(card => {
+                    const categories = card.getAttribute('data-category').split(' ');
+                    if (filter === 'all' || categories.includes(filter)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
         });
-    });
+    }
 
     // Scroll Reveal
-    const observerOptions = {
-        threshold: 0.1
-    };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('h1, h2, p, .hero-sub').forEach(el => {
+    document.querySelectorAll('h1, h2, p, .hero-sub, .featured-card, .work-row').forEach(el => {
         el.classList.add('reveal-text');
         observer.observe(el);
     });
 
-    // Project Hover Effects with Image Preview
+    // Project Hover Effects (index.html)
     const projectItems = document.querySelectorAll('.work-row');
     const projectPreview = document.getElementById('project-preview');
 
@@ -223,11 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('mouseenter', () => {
             const type = item.getAttribute('data-ascii');
             const imagePath = item.getAttribute('data-image');
-
-            // Update ASCII background
             if (window.asciiBg) window.asciiBg.setCharset(type);
-
-            // Show project preview image
             if (imagePath && projectPreview) {
                 projectPreview.style.backgroundImage = `url("${imagePath}")`;
                 projectPreview.classList.add('visible');
@@ -235,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         item.addEventListener('mousemove', (e) => {
-            // Update preview position to follow cursor
             if (projectPreview && projectPreview.classList.contains('visible')) {
                 projectPreview.style.left = e.clientX + 'px';
                 projectPreview.style.top = e.clientY + 'px';
@@ -243,39 +229,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         item.addEventListener('mouseleave', () => {
-            // Reset ASCII background
             if (window.asciiBg) window.asciiBg.setCharset('DEFAULT');
-
-            // Hide project preview
             if (projectPreview) {
                 projectPreview.classList.remove('visible');
                 projectPreview.style.backgroundImage = '';
             }
         });
     });
-    // Theme Toggle Logic
+
+    // Theme Toggle
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
+    if (localStorage.getItem('theme') === 'light') body.classList.add('light-mode');
 
-    // Load saved theme preference on page load
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        body.classList.add('light-mode');
-    }
-
-    // Add click handler if toggle button exists
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('light-mode');
-            const isLight = body.classList.contains('light-mode');
-
-            // Save preference to localStorage
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-
-            // Update Canvas Colors if canvas exists
-            if (window.asciiBg) {
-                // Canvas will pick up new CSS variables on next animate loop
-            }
+            localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
         });
     }
 });

@@ -99,6 +99,12 @@ html {
     gap: 0.5rem;
 }
 
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: none;
+}
+
 .logo {
     font-weight: 700;
     font-size: 1rem;
@@ -131,7 +137,8 @@ html {
     transition: width 0.3s var(--easing);
 }
 
-.nav-item:hover::after {
+.nav-item:hover::after,
+.nav-item.active::after {
     width: 100%;
 }
 
@@ -453,6 +460,96 @@ html {
     transform: scale(1.2);
     filter: grayscale(0%) contrast(1.05);
 }
+
+/* --- Works Gallery Styles --- */
+.works-header-section {
+    padding: 6rem 0 4rem 0;
+    max-width: 800px;
+}
+
+.works-title {
+    font-size: 4rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.03em;
+}
+
+.works-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--dim-color);
+    margin-bottom: 3rem;
+}
+
+.filter-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.filter-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #222;
+    padding: 0.6rem 1.2rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--dim-color);
+    cursor: none;
+    transition: all 0.3s var(--easing);
+}
+
+.filter-pill:hover,
+.filter-pill.active {
+    background: var(--text-color);
+    color: var(--bg-color);
+    border-color: var(--text-color);
+}
+
+.works-grid.full-width {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 8rem;
+}
+
+.works-grid.full-width .project-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 3rem;
+    align-items: center;
+}
+
+.works-grid.full-width .featured-image {
+    height: 400px;
+    margin-top: 0;
+}
+
+.works-grid.full-width .featured-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project-card.hidden {
+    display: none !important;
+}
+
+@media (max-width: 1024px) {
+    .works-grid.full-width .project-card {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .works-grid.full-width .featured-image {
+        height: 300px;
+    }
+}
+
 
 /* --- Works List --- */
 .works-list-section {
