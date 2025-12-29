@@ -53,6 +53,12 @@ body {
     letter-spacing: 0.05em;
 }
 
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: none;
+}
+
 .nav-left {
     display: flex;
     flex-direction: column;
