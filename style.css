@@ -398,9 +398,10 @@ html {
 }
 
 .tag {
-    background: rgba(255, 255, 255, 0.08);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: 100px;
     font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -409,9 +410,15 @@ html {
     transition: all 0.3s var(--easing);
 }
 
+.dark-mode .tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .featured-card:hover .tag {
-    background: rgba(255, 255, 255, 0.12);
-    color: var(--text-color);
+    background: var(--text-color);
+    color: var(--bg-color);
+    border-color: var(--text-color);
 }
 
 .featured-title {
@@ -484,8 +491,8 @@ html {
 }
 
 .filter-pill {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid #222;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 0.6rem 1.2rem;
     border-radius: 100px;
     font-size: 0.7rem;
@@ -494,6 +501,11 @@ html {
     color: var(--dim-color);
     cursor: none;
     transition: all 0.3s var(--easing);
+}
+
+.dark-mode .filter-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .filter-pill:hover,
