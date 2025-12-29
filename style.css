@@ -43,17 +43,7 @@ body {
     width: 100vw;
 }
 
-/* --- Canvas & Overlays --- */
-#ascii-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: 0.4;
-    /* Subtle background */
-}
+/* --- Overlays --- */
 
 .noise-overlay {
     position: fixed;
