@@ -88,8 +88,9 @@ class AsciiBackground {
 
                 if (dist < maxDist) {
                     intensity = 1 - (dist / maxDist);
-                    // Highlight color near mouse
-                    this.ctx.fillStyle = `rgba(0, 80, 252, ${intensity})`; // Blue #0050fc
+                    // Highlight color near mouse - uses CSS brand color
+                    const brandColorRgb = computedStyle.getPropertyValue('--brand-color-rgb').trim() || '0, 80, 252';
+                    this.ctx.fillStyle = `rgba(${brandColorRgb}, ${intensity})`;
                 } else {
                     this.ctx.fillStyle = '#1a1a1a'; // Dim background
                 }
@@ -240,12 +241,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Theme Toggle
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
-    if (localStorage.getItem('theme') === 'light') body.classList.add('light-mode');
+
+    // Sync theme from documentElement (set in head) to body
+    if (document.documentElement.classList.contains('light-mode')) {
+        body.classList.add('light-mode');
+    }
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+            const isLight = body.classList.toggle('light-mode');
+            document.documentElement.classList.toggle('light-mode', isLight);
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
         });
     }
+
+    // Remove preload class after a short delay to allow initial render without transitions
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            body.classList.remove('preload');
+        }, 100);
+    });
 });

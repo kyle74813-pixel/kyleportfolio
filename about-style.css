@@ -5,6 +5,8 @@
     --text-color: #E0E0E0;
     --text-dim: #999;
     --accent-color: #fff;
+    --brand-color: #0050fc;
+    --brand-color-rgb: 0, 80, 252;
     --font-main: 'Inter', sans-serif;
 }
 
@@ -13,6 +15,17 @@ body.light-mode {
     --text-color: #111111;
     --text-dim: #666;
     --accent-color: #000000;
+    --brand-color: #8f8f8f;
+    --brand-color-rgb: 143, 143, 143;
+}
+
+/* Disable transitions on load to prevent reanimation */
+.preload * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
 }
 
 * {
