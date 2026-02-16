@@ -1177,8 +1177,8 @@ select,
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(15, 15, 15, 0.7);
-    /* Dark gray with 30% transparency */
+    /* Light Mode: Inverted modal (Dark background) */
+    background-color: rgba(15, 15, 15, 0.8) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     opacity: 0;
@@ -1193,6 +1193,25 @@ select,
     opacity: 1;
 }
 
+/* Modal Controls: White in Light Mode (on dark modal) */
+.modal-close,
+.modal-btn,
+.modal-counter {
+    color: #ffffff !important;
+}
+
+/* Dark Mode: Inverted modal (Light background) */
+.dark-mode .modal {
+    background-color: rgba(240, 240, 240, 0.8) !important;
+}
+
+/* Modal Controls: Black in Dark Mode (on light modal) */
+.dark-mode .modal-close,
+.dark-mode .modal-btn,
+.dark-mode .modal-counter {
+    color: #000000 !important;
+}
+
 .modal-content {
     position: relative;
     width: 100%;
@@ -1201,7 +1220,6 @@ select,
     justify-content: center;
     align-items: center;
     padding: 32px;
-    /* Fixed 32px padding around the image */
 }
 
 .modal-image {
@@ -1215,12 +1233,12 @@ select,
     position: fixed;
     top: 32px;
     right: 32px;
-    color: var(--text-color);
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     cursor: pointer;
     line-height: 1;
     z-index: 10001;
     font-family: var(--font-sans);
+    font-weight: 300;
 }
 
 .modal-nav {
@@ -1238,8 +1256,7 @@ select,
     pointer-events: auto;
     background: none;
     border: none;
-    color: var(--text-color);
-    font-size: 3rem;
+    font-size: 2rem;
     cursor: pointer;
     opacity: 0.5;
     transition: opacity 0.3s;
@@ -1256,8 +1273,7 @@ select,
     left: 50%;
     transform: translateX(-50%);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--dim-color);
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
 }
