@@ -899,18 +899,34 @@ select,
     /* Navigation */
     .top-nav {
         flex-direction: column;
+        align-items: flex-start;
         gap: 1.5rem;
     }
 
     .nav-right {
-        gap: 1.5rem;
+        width: 100%;
+        justify-content: space-between;
+        gap: 1rem;
         font-size: 0.9rem;
     }
 
     /* Hero */
+    .hero-section h1 {
+        font-size: 3rem;
+        line-height: 1.1;
+        margin-bottom: 2rem;
+        letter-spacing: -0.04em;
+    }
+
+    .hero-sub-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+    }
+
     .circular-text-container {
-        width: 300px;
-        height: 300px;
+        width: 260px;
+        height: 260px;
     }
 
     .center-image {
@@ -937,26 +953,52 @@ select,
         height: 220px;
     }
 
-    /* Works List */
+    /* Works List (index.html) */
     .work-row {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
+        gap: 0.25rem;
+        padding: 1.5rem 0;
     }
 
     .work-col.name {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
     }
 
     .work-col.type,
     .work-col.year {
-        font-size: 0.7rem;
-        opacity: 0.7;
+        font-size: 0.75rem;
+        opacity: 0.6;
     }
 
-    /* Info Section */
+    /* Works Grid (works.html) */
+    .works-header-section {
+        padding: 4rem 0 2rem 0;
+    }
+
+    .works-title {
+        font-size: 3rem;
+    }
+
+    .filter-container {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .filter-pill {
+        padding: 0.6rem 1rem;
+        font-size: 0.7rem;
+    }
+
+    /* Info Section (about.html) */
     .info-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
+    }
+
+    .info-col h2 {
+        font-size: 0.8rem;
+        margin-bottom: 1.5rem;
     }
 
     .info-col p {
@@ -964,23 +1006,72 @@ select,
     }
 
     /* Project Page */
+    .project-header-new {
+        padding: 0 0 3rem 0;
+    }
+
+    .project-headline {
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
+    }
+
     .project-meta-grid {
         grid-template-columns: 1fr;
-        /* Stack meta columns */
         gap: 2rem;
+    }
+
+    .meta-label {
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .meta-value {
+        font-size: 1rem;
+    }
+
+    .project-problem-section {
+        padding: 3rem 0;
+    }
+
+    .section-big-title {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .problem-body p {
+        font-size: 1.1rem;
     }
 
     .gallery-grid {
         grid-template-columns: 1fr;
-        /* Stack gallery images */
+        gap: 1rem;
     }
 
     .gallery-item.half {
-        height: 40vh;
+        height: 50vh;
     }
 
     .project-hero-image {
-        height: 50vh;
+        height: 40vh;
+        margin-bottom: 3rem;
+    }
+
+    /* Modal Navigation on Mobile */
+    .modal-nav {
+        padding: 0 16px;
+    }
+
+    .modal-btn {
+        font-size: 1.5rem;
+    }
+
+    .modal-close {
+        top: 16px;
+        right: 16px;
+    }
+
+    .modal-counter {
+        bottom: 16px;
     }
 }
 
@@ -1291,10 +1382,19 @@ select,
     letter-spacing: 0.2em;
 }
 
-/* Allow interaction with section images */
-.section-image-full,
-.section-image-half,
-.img-placeholder-large,
-.img-placeholder-gallery {
-    cursor: pointer;
+/* Hide custom cursor on mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+
+    .custom-cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+
+    body {
+        cursor: auto !important;
+    }
+
+    * {
+        cursor: auto !important;
+    }
 }

@@ -392,41 +392,75 @@ body.dark-mode .toggle-thumb {
 /* Responsive */
 @media (max-width: 768px) {
     .about-container {
-        padding: 0 1.5rem 2rem 1.5rem;
+        padding: 0 1.5rem 4rem 1.5rem;
     }
 
     .top-nav {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
         flex-direction: column;
+        align-items: flex-start;
         gap: 1.5rem;
     }
 
     .nav-right {
-        gap: 1.5rem;
+        width: 100%;
+        justify-content: space-between;
+        gap: 1rem;
     }
 
     .about-headline {
-        font-size: 2rem;
+        font-size: 2.25rem;
+        line-height: 1.25;
+        letter-spacing: -0.03em;
     }
 
     .skills-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
+        padding-top: 2rem;
     }
 
     .experience-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 4rem;
+        padding-top: 2rem;
     }
 
     .section-title {
-        font-size: 1.75rem;
+        font-size: 2rem;
+        margin-bottom: 2rem;
     }
 
     .cta-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
+    }
+
+    .job-title {
+        font-size: 1.1rem;
+    }
+
+    .job-description {
+        font-size: 0.95rem;
     }
 }
+
+/* Hide custom cursor on mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+
+    .custom-cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+
+    body {
+        cursor: auto !important;
+    }
+
+    * {
+        cursor: auto !important;
+    }
+}
+
 /* --- Custom Cursor --- */
 body {
     cursor: none;
