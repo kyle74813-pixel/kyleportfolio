@@ -479,7 +479,7 @@ html {
 
 /* Framed Image variant for design frames */
 .featured-image.framed-image {
-    background-color: #f1f3f6;
+    background-color: #EDF4FF;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -842,7 +842,7 @@ select,
 
 /* Framed Hero variant */
 .project-hero-image.framed-hero {
-    background-color: #f1f3f6;
+    background-color: #EDF4FF;
     display: flex;
     justify-content: center;
     align-items: center;
