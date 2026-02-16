@@ -1167,6 +1167,7 @@ select,
 .project-preview-image.visible {
     opacity: 1;
 }
+
 /* --- Image Modal --- */
 .modal {
     display: none;
@@ -1176,8 +1177,10 @@ select,
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(var(--bg-color), 0.95);
-    background-color: var(--bg-color);
+    background-color: rgba(15, 15, 15, 0.7);
+    /* Dark gray with 30% transparency */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     opacity: 0;
     transition: opacity 0.4s var(--easing);
     justify-content: center;
@@ -1192,11 +1195,13 @@ select,
 
 .modal-content {
     position: relative;
-    max-width: 90%;
-    max-height: 85%;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 32px;
+    /* Fixed 32px padding around the image */
 }
 
 .modal-image {
@@ -1207,15 +1212,15 @@ select,
 }
 
 .modal-close {
-    position: absolute;
-    top: -40px;
-    right: 0;
+    position: fixed;
+    top: 32px;
+    right: 32px;
     color: var(--text-color);
-    font-size: 1rem;
+    font-size: 2.5rem;
     cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-family: var(--font-mono);
+    line-height: 1;
+    z-index: 10001;
+    font-family: var(--font-sans);
 }
 
 .modal-nav {
@@ -1234,7 +1239,7 @@ select,
     background: none;
     border: none;
     color: var(--text-color);
-    font-size: 2rem;
+    font-size: 3rem;
     cursor: pointer;
     opacity: 0.5;
     transition: opacity 0.3s;
@@ -1246,18 +1251,21 @@ select,
 }
 
 .modal-counter {
-    position: absolute;
-    bottom: -40px;
+    position: fixed;
+    bottom: 32px;
     left: 50%;
     transform: translateX(-50%);
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--dim-color);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.2em;
 }
 
 /* Allow interaction with section images */
-.section-image-full, .section-image-half, .img-placeholder-large, .img-placeholder-gallery {
+.section-image-full,
+.section-image-half,
+.img-placeholder-large,
+.img-placeholder-gallery {
     cursor: pointer;
 }
