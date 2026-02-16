@@ -46,26 +46,76 @@ document.addEventListener('DOMContentLoaded', () => {
     updateInteractiveElements();
 
     // Project Filtering Logic for works.html
-    const filterPills = document.querySelectorAll('.filter-pill');
+    const filterPills = document.querySelectorAll('.filter-pill:not(.reset-btn)');
     const projectCards = document.querySelectorAll('.project-card');
+    const resetBtn = document.getElementById('reset-filter');
 
     if (filterPills.length > 0 && projectCards.length > 0) {
+        let activeFilters = new Set(['all']);
+
+        const updateFilters = () => {
+            const isAllActive = activeFilters.has('all');
+
+            // Show/Hide Reset Button
+            if (resetBtn) {
+                resetBtn.style.display = (activeFilters.size > 0 && !isAllActive) ? 'inline-block' : 'none';
+            }
+
+            // Update projects
+            projectCards.forEach(card => {
+                const categories = card.getAttribute('data-category').split(' ');
+                if (isAllActive) {
+                    card.classList.remove('hidden');
+                } else {
+                    // Show if project matches ANY of the active filters
+                    const isMatch = Array.from(activeFilters).some(filter => categories.includes(filter));
+                    card.classList.toggle('hidden', !isMatch);
+                }
+            });
+        };
+
         filterPills.forEach(pill => {
             pill.addEventListener('click', () => {
                 const filter = pill.getAttribute('data-filter');
-                filterPills.forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
 
-                projectCards.forEach(card => {
-                    const categories = card.getAttribute('data-category').split(' ');
-                    if (filter === 'all' || categories.includes(filter)) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
+                if (filter === 'all') {
+                    activeFilters.clear();
+                    activeFilters.add('all');
+                    filterPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-filter') === 'all'));
+                } else {
+                    // Remove 'all' if it was active
+                    if (activeFilters.has('all')) {
+                        activeFilters.delete('all');
+                        document.querySelector('.filter-pill[data-filter="all"]').classList.remove('active');
                     }
-                });
+
+                    // Toggle current filter
+                    if (activeFilters.has(filter)) {
+                        activeFilters.delete(filter);
+                        pill.classList.remove('active');
+                    } else {
+                        activeFilters.add(filter);
+                        pill.classList.add('active');
+                    }
+
+                    // If no filters left, default back to 'all'
+                    if (activeFilters.size === 0) {
+                        activeFilters.add('all');
+                        document.querySelector('.filter-pill[data-filter="all"]').classList.add('active');
+                    }
+                }
+                updateFilters();
             });
         });
+
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                activeFilters.clear();
+                activeFilters.add('all');
+                filterPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-filter') === 'all'));
+                updateFilters();
+            });
+        }
     }
 
     // Scroll Reveal
