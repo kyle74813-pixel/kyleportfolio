@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 100);
             } else {
                 modalImg.src = src;
-                modalImg.style.opacity = '1';
+                // No wait, let CSS handle the entry opacity
             }
 
             if (currentIndexLabel) currentIndexLabel.textContent = currentIndex + 1;
