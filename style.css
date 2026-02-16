@@ -1018,8 +1018,8 @@ select,
 .project-problem-section {
     padding: 8rem 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 350px 1fr;
+    gap: 2rem;
     align-items: start;
     border-top: 1px solid #222;
 }
@@ -1042,7 +1042,7 @@ select,
     font-size: 1.25rem;
     line-height: 1.5;
     color: var(--dim-color);
-    max-width: 600px;
+    width: 100%;
 }
 
 /* Mobile for Problem Section */
