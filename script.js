@@ -177,6 +177,95 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Image Modal & Carousel Logic
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalClose = document.querySelector('.modal-close');
+    const prevBtn = document.getElementById('modal-prev');
+    const nextBtn = document.getElementById('modal-next');
+    const currentIndexLabel = document.getElementById('current-index');
+    const totalCountLabel = document.getElementById('total-count');
+
+    let currentSectionImages = [];
+    let currentIndex = 0;
+
+    if (modal) {
+        // Collect all potential project sections
+        const sections = document.querySelectorAll('.project-problem-section, .project-gallery');
+
+        sections.forEach(section => {
+            // Find all interactive images in this section
+            const images = section.querySelectorAll('.section-image-full, .section-image-half, .img-placeholder-gallery');
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    currentSectionImages = Array.from(images);
+                    currentIndex = index;
+                    openModal();
+                });
+            });
+        });
+
+        const openModal = () => {
+            modal.classList.add('visible');
+            updateModalImage();
+            body.style.overflow = 'hidden'; // Prevent scroll
+        };
+
+        const closeModal = () => {
+            modal.classList.remove('visible');
+            body.style.overflow = '';
+        };
+
+        const updateModalImage = () => {
+            const target = currentSectionImages[currentIndex];
+            let src = '';
+
+            if (target.tagName === 'IMG') {
+                src = target.src;
+            } else {
+                const bg = window.getComputedStyle(target).backgroundImage;
+                src = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+                if (src === 'none' || src === '') {
+                    // Fallback for placeholders
+                    src = 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80';
+                }
+            }
+
+            modalImg.src = src;
+            if (currentIndexLabel) currentIndexLabel.textContent = currentIndex + 1;
+            if (totalCountLabel) totalCountLabel.textContent = currentSectionImages.length;
+        };
+
+        if (modalClose) modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex - 1 + currentSectionImages.length) % currentSectionImages.length;
+                updateModalImage();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex + 1) % currentSectionImages.length;
+                updateModalImage();
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('visible')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft' && prevBtn) prevBtn.click();
+            if (e.key === 'ArrowRight' && nextBtn) nextBtn.click();
+        });
+    }
+
     // Remove preload class after a short delay to allow initial render without transitions
     window.addEventListener('load', () => {
         setTimeout(() => {
