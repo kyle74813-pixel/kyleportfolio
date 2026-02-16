@@ -995,6 +995,10 @@ select,
     }
 
     /* Featured Projects */
+    .featured-projects-section {
+        padding: 2rem 0;
+    }
+
     .featured-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1061,7 +1065,7 @@ select,
     }
 
     .works-list-section {
-        padding: 2rem 0 1rem 0;
+        padding: 1.5rem 0;
     }
 
     .section-header {
@@ -1069,7 +1073,7 @@ select,
     }
 
     .info-section {
-        padding: 1.5rem 0 5rem 0;
+        padding: 2rem 0 5rem 0;
     }
 
     /* Project Page */
