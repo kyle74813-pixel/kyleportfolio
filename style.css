@@ -1060,6 +1060,18 @@ select,
         font-size: 1.1rem;
     }
 
+    .works-list-section {
+        padding: 2rem 0 1rem 0;
+    }
+
+    .section-header {
+        margin-bottom: 2rem;
+    }
+
+    .info-section {
+        padding: 1.5rem 0 5rem 0;
+    }
+
     /* Project Page */
     .project-header-new {
         padding: 0 0 3rem 0;
