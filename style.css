@@ -10,6 +10,25 @@
     --easing: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 12px;
+    z-index: 2000;
+    cursor: pointer;
+}
+
+.mobile-menu-toggle .line {
+    width: 24px;
+    height: 1.5px;
+    background-color: var(--text-color);
+    transition: transform 0.4s var(--easing), opacity 0.4s;
+}
+
 .dark-mode {
     --bg-color: #050505;
     --text-color: #E0E0E0;
@@ -898,30 +917,65 @@ select,
 
     /* Navigation */
     .top-nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 0;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
     }
 
     .nav-right {
+        position: fixed;
+        top: 0;
+        right: -100%;
         width: 100%;
-        justify-content: space-between;
-        gap: 1rem;
-        font-size: 0.9rem;
+        height: 100vh;
+        background-color: var(--bg-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        padding: 2rem;
+        transition: right 0.6s var(--easing);
+        z-index: 1000;
+    }
+
+    .nav-right.active {
+        right: 0;
+    }
+
+    .nav-item {
+        font-size: 1.5rem;
+    }
+
+    .mobile-menu-toggle.active .line:nth-child(1) {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    .mobile-menu-toggle.active .line:nth-child(2) {
+        transform: translateY(-3.5px) rotate(-45deg);
     }
 
     /* Hero */
     .hero-section h1 {
-        font-size: 3rem;
-        line-height: 1.1;
-        margin-bottom: 2rem;
-        letter-spacing: -0.04em;
+        font-size: 3.2rem;
+        line-height: 1.05;
+        margin-bottom: 3rem;
+        letter-spacing: -0.05em;
     }
 
     .hero-sub-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
-        margin-bottom: 4rem;
+        margin-bottom: 5rem;
+    }
+
+    .hero-sub-grid p {
+        font-size: 0.95rem;
+        line-height: 1.4;
     }
 
     .circular-text-container {
@@ -935,8 +989,9 @@ select,
     }
 
     .project-headline {
-        font-size: 2.4rem;
-        margin-bottom: 2rem;
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
+        line-height: 1.2;
     }
 
     /* Featured Projects */
@@ -977,7 +1032,7 @@ select,
     }
 
     .works-title {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
 
     .filter-container {
