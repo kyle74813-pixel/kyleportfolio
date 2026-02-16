@@ -209,15 +209,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const openModal = () => {
             updateModalImage();
             modal.classList.add('visible');
-            body.style.overflow = 'hidden'; // Prevent scroll
+            body.style.overflow = 'hidden';
         };
 
         const closeModal = () => {
             modal.classList.remove('visible');
             setTimeout(() => {
                 body.style.overflow = '';
-                modalImg.src = ''; // Clear src after animation
-            }, 600);
+                modalImg.src = '';
+            }, 300);
         };
 
         const updateModalImage = () => {
@@ -234,18 +234,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // If modal is already visible (carousel navigation), add a quick fade transition
             if (modal.classList.contains('visible')) {
                 modalImg.style.opacity = '0';
                 setTimeout(() => {
                     modalImg.src = src;
-                    modalImg.onload = () => {
-                        modalImg.style.opacity = '1';
-                    };
-                }, 200);
+                    modalImg.style.opacity = '1';
+                }, 100);
             } else {
                 modalImg.src = src;
-                modalImg.style.opacity = ''; // Reset to CSS controlled
+                modalImg.style.opacity = '1';
             }
 
             if (currentIndexLabel) currentIndexLabel.textContent = currentIndex + 1;
@@ -256,6 +253,25 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
+
+        // Background Preload
+        const preloadImages = () => {
+            const allImages = document.querySelectorAll('.section-image-full, .section-image-half, .img-placeholder-gallery');
+            allImages.forEach(target => {
+                let src = '';
+                if (target.tagName === 'IMG') {
+                    src = target.src;
+                } else {
+                    const bg = window.getComputedStyle(target).backgroundImage;
+                    src = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+                }
+                if (src && src !== 'none') {
+                    const img = new Image();
+                    img.src = src;
+                }
+            });
+        };
+        window.addEventListener('load', preloadImages);
 
         if (prevBtn) {
             prevBtn.addEventListener('click', (e) => {
