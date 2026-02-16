@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI STUDIO REDESIGN // KYLE KAWAKAMI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=33">
+    <script>
+        // Immediate theme check to prevent flash
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+</head>
+
+<body class="preload">
+    <!-- Noise Overlay for texture -->
+    <div class="noise-overlay"></div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor" class="custom-cursor"></div>
+    <div id="cursor-follower" class="cursor-follower"></div>
+
+    <!-- Main Content Wrapper -->
+    <main class="app-container">
+
+        <!-- Navigation -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="index.html" class="logo-link">
+                    <div class="logo">KYLE KAWAKAMI</div>
+                </a>
+                <div class="role">PRODUCT DESIGNER</div>
+            </div>
+            <div class="nav-right">
+                <a href="works.html" class="nav-item">WORKS</a>
+                <a href="about.html" class="nav-item">ABOUT</a>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                    <div class="toggle-track">
+                        <div class="toggle-icons">
+                            <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                            <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                        </div>
+                        <div class="toggle-thumb"></div>
+                    </div>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Full Width Hero Image -->
+        <section class="project-hero-image">
+            <div class="img-placeholder-large"></div>
+        </section>
+
+        <!-- Project Header -->
+        <section class="project-header-new">
+            <div class="project-label">AI Studio Redesign</div>
+            <h1 class="project-headline">
+                Reimagining the developer experience for enterprise AI application orchestration
+            </h1>
+
+            <div class="project-meta-grid">
+                <div class="meta-col">
+                    <div class="meta-label">ROLE & RESPONSIBILITIES</div>
+                    <div class="meta-value">
+                        Lead Product Designer
+                    </div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">TIMELINE</div>
+                    <div class="meta-value">
+                        4 months (2024-2025)
+                    </div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">COLLABORATION</div>
+                    <div class="meta-value">
+                        2 Designers<br>
+                        2 Product Managers<br>
+                        12 Engineers
+                    </div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">OUTCOME</div>
+                    <div class="meta-value">
+                        New Visual Language & Core Orchestration UI
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="project-problem-section">
+            <div class="section-big-title">Problem</div>
+            <div class="problem-body">
+                <p>The original AI Studio was built for speed of delivery, resulting in a fragmented user experience
+                    that struggled to keep pace with the rapidly evolving agentic AI landscape.</p>
+                <p>Developers found it difficult to visualize complex agent relationships and debug multi-step
+                    autonomous workflows, leading to increased development time and user frustration.</p>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section class="project-problem-section">
+            <div class="section-big-title">Research</div>
+            <div class="problem-body">
+                <p>We conducted deep-dive interviews with enterprise developers and technical architects to understand
+                    their mental models for "chaining" AI tasks.</p>
+                <p>Key findings revealed that the biggest pain point wasn't writing the code, but understanding the
+                    system's state at any given point in an autonomous loop.</p>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="project-problem-section">
+            <div class="section-big-title">Solution</div>
+            <div class="problem-body">
+                <p>The redesign introduced a node-based visual orchestration layer that allowed developers to drag,
+                    drop, and connect agents like Lego blocks.</p>
+                <p>We created a unified design system specifically for AI operations, emphasizing clarity, real-time
+                    feedback, and high-density information display without the clutter.</p>
+            </div>
+        </section>
+
+
+        <!-- Project Gallery -->
+        <section class="project-gallery">
+            <div class="gallery-item full">
+                <div class="img-placeholder-gallery"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item half">
+                    <div class="img-placeholder-gallery"></div>
+                </div>
+                <div class="gallery-item half">
+                    <div class="img-placeholder-gallery"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Project -->
+        <section class="next-project">
+            <div class="next-label">NEXT PROJECT</div>
+            <a href="project.html" class="next-link">AGENT WORKBENCH -></a>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
