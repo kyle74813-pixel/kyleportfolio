@@ -207,14 +207,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const openModal = () => {
-            modal.classList.add('visible');
             updateModalImage();
+            modal.classList.add('visible');
             body.style.overflow = 'hidden'; // Prevent scroll
         };
 
         const closeModal = () => {
             modal.classList.remove('visible');
-            body.style.overflow = '';
+            setTimeout(() => {
+                body.style.overflow = '';
+                modalImg.src = ''; // Clear src after animation
+            }, 600);
         };
 
         const updateModalImage = () => {
@@ -227,12 +230,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 const bg = window.getComputedStyle(target).backgroundImage;
                 src = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
                 if (src === 'none' || src === '') {
-                    // Fallback for placeholders
                     src = 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80';
                 }
             }
 
-            modalImg.src = src;
+            // If modal is already visible (carousel navigation), add a quick fade transition
+            if (modal.classList.contains('visible')) {
+                modalImg.style.opacity = '0';
+                setTimeout(() => {
+                    modalImg.src = src;
+                    modalImg.onload = () => {
+                        modalImg.style.opacity = '1';
+                    };
+                }, 200);
+            } else {
+                modalImg.src = src;
+                modalImg.style.opacity = ''; // Reset to CSS controlled
+            }
+
             if (currentIndexLabel) currentIndexLabel.textContent = currentIndex + 1;
             if (totalCountLabel) totalCountLabel.textContent = currentSectionImages.length;
         };
