@@ -1025,7 +1025,7 @@ select,
 }
 
 .section-big-title {
-    font-size: 5rem;
+    font-size: 4.4rem;
     font-weight: 500;
     color: var(--text-color);
     line-height: 1;
@@ -1051,6 +1051,10 @@ select,
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 4rem 0;
+    }
+
+    .section-big-title {
+        font-size: 2.4rem;
     }
 
 }
